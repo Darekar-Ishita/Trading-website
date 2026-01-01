@@ -1,0 +1,372 @@
+/* =========================
+   VARIABLES
+========================= */
+:root {
+  --primary: #A05AFF;
+  --accent: #1BCFB4;
+  --support1: #4BCBEB;
+  --support2: #FE9496;
+  --support3: #9E58FF;
+
+  --dark-bg: #0b1220;
+  --dark-panel: #111827;
+  --dark-card: rgba(17, 24, 39, 0.75);
+  --dark-text: #e5e7eb;
+
+  --light-bg: #F5F5F5;
+  --light-panel: #ffffff;
+  --light-card: rgba(255, 255, 255, 0.8);
+  --light-text: #0f172a;
+
+  --glass-bg-dark: rgba(17, 24, 39, 0.75);
+  --glass-bg-light: rgba(255, 255, 255, 0.75);
+}
+
+/* =========================
+   GLOBAL
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* =========================
+   THEMES
+========================= */
+body.dark {
+  background: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+body.light {
+  background: var(--light-bg);
+  color: var(--light-text);
+}
+
+/* =========================
+   AUTH PAGES
+========================= */
+.auth-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-box {
+  width: 360px;
+  padding: 32px;
+  border-radius: 14px;
+  background: var(--dark-card);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  transition: background 0.3s;
+}
+
+body.light .auth-box {
+  background: var(--glass-bg-light);
+}
+
+.auth-box h2 {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.auth-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: inherit;
+}
+
+.auth-box button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.auth-box button:hover {
+  background: var(--accent);
+}
+
+.auth-box p {
+  margin-top: 14px;
+  text-align: center;
+}
+
+.auth-box a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.auth-box a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   DASHBOARD LAYOUT
+========================= */
+.dashboard {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* MAIN CONTENT */
+.main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  min-width: 0; /* allows cards to shrink */
+  transition: margin-left 0.3s;
+}
+
+/* =========================
+   SEARCH INPUT
+========================= */
+.search {
+  flex: 1;
+  max-width: 420px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #D1D5DB; /* light mode border */
+  outline: none;
+  font-size: 14px;
+  color: var(--light-text);
+  background: #F5F5F5; /* light mode background */
+  transition: all 0.3s;
+}
+
+body.dark .search {
+  background: rgba(255, 255, 255, 0.05); /* glassy dark */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--dark-text);
+}
+
+.search::placeholder {
+  color: #6B7280;
+}
+
+body.dark .search::placeholder {
+  color: #9ca3af;
+}
+
+/* TOP BAR */
+.topbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+/* CARDS GRID */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+/* CARD STYLES */
+.card {
+  padding: 20px;
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  color: inherit;
+  transition: all 0.4s ease;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* DARK MODE CARDS */
+body.dark .card {
+  background: rgba(17, 24, 39, 0.6); /* glassy dark */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  color: var(--dark-text);
+}
+
+/* LIGHT MODE CARDS */
+body.light .card {
+  background: var(--light-card);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  color: var(--light-text);
+}
+
+/* CARD HOVER ANIMATION */
+.card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+.sidebar {
+  background: var(--dark-panel);
+  padding: 16px;
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+
+body.light .sidebar {
+  background: var(--light-panel);
+}
+
+.sidebar.open {
+  width: 220px;
+}
+
+.sidebar.closed {
+  width: 64px;
+}
+
+.sidebar .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-bottom: 24px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+/* Menu buttons */
+.sidebar .menu button.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+/* Icon container */
+.sidebar .menu-item .icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+  color: inherit;
+  background: transparent;
+}
+
+/* Hover border glow only */
+.sidebar .menu-item:hover .icon {
+  border-color: currentColor;
+  box-shadow: 0 0 12px currentColor;
+  background: transparent;
+  color: inherit;
+}
+
+/* Text span */
+.sidebar .menu-text {
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+/* Optional: text highlight when sidebar open */
+.sidebar.open .menu-item:hover .menu-text {
+  color: currentColor;
+  font-weight: 600;
+}
+
+/* =========================
+   BUTTONS GLOBAL
+========================= */
+button {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+
+
+/* =========================
+   PROFILE PAGE
+========================= */
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-page h2 {
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Container for boxes */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Individual profile box */
+.profile-box {
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.75); /* Light mode default */
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Dark mode */
+body.dark .profile-box {
+  background: rgba(17, 24, 39, 0.7);
+  color: #e5e7eb;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+/* Label and value styling */
+.profile-box .label {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.profile-box .value {
+  font-weight: 600;
+  font-size: 16px;
+}
